@@ -1,5 +1,5 @@
 # Faster Whisper Gradio
-Real-time speech-to-text application using Faster Whisper with Gradio.
+Real-time speech-to-text application using Faster Whisper with Gradio. This application utilizes DeeplX for translation.
 
 ## Installation
 
