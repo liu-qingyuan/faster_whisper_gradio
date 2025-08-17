@@ -11,7 +11,7 @@ from typing import Any, List, NamedTuple, Optional, Tuple, Union
 from transformers import DistilBertForTokenClassification, DistilBertTokenizerFast
 import torch
 
-global_outputs = ["请等待管理员加载", "刘青沅在忙", "别催了，别说不好用了，服务器不要你钱已经不错了", "要新功能可以找我，反正我没时间改U•ェ•*U"]
+global_outputs = ["Please wait for the administrator to load", "Processing...", "Transcription starting soon...", "New features can be requested, but implementation may take time U•ェ•*U."]
 
 class Punctuator:
     def __init__(self, model_name="Qishuai/distilbert_punctuator_en"):
@@ -476,18 +476,18 @@ def transcribe_wrapper(audio, slider):
 demo = gr.Interface(
     fn=transcribe_wrapper,
     inputs=[
-        gr.Audio(sources=["microphone"], streaming=True, label="点开始录音就实时更新了"),
-        gr.Slider(minimum=0, maximum=9999, value=1, step=1, label="Password (0=不允许, 1024=允许) 别试密码，两个同时录音会炸掉")
+        gr.Audio(sources=["microphone"], streaming=True, label="Start recording for real-time updates"),
+        gr.Slider(minimum=0, maximum=9999, value=1, step=1, label="Password (0=Deny, 1024=Allow) Don't try password, two microphones will explode")
     ],
     outputs=[
-        gr.Textbox(value="PolyU", label="综合转录"),
-        gr.Textbox(value="Hello World! Yuan", label="3秒转录"),
-        gr.Textbox(value="Choose your life!", label="30秒转录"),
-        gr.Textbox(value="COMP", label="60秒转录")
+        gr.Textbox(value="Real-time Transcription", label="Combined Transcription"),
+        gr.Textbox(value="3-second Transcription", label="3-second window"),
+        gr.Textbox(value="30-second Transcription", label="30-second window"),
+        gr.Textbox(value="60-second Transcription", label="60-second window")
     ],
     live=True,
-    title="霸道翻译爱上我：字字珠玑，话话情深，沅式翻译之我叫翻译机",
-    description="直接点开始录音就行了，有延迟，脚本会自动更新，只是提供辅助，保证的是准确率，3秒转录的可能不是那么准",
+    title="Real-time Transcription and Translation",
+    description="Click 'Start Recording'. There is a delay, but the script will update automatically. Accuracy is prioritized, so the 3-second transcription may be less precise.",
     examples=None
 )
 
